@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dimasstore - Modern Athletic Running Gear</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            lime: '#ccff00',
+                            limeHover: '#b3e600',
+                            cyan: '#00f0ff',
+                            electric: '#0066ff'
+                        },
+                        slate: {
+                            950: '#080c14',
+                            900: '#0f172a',
+                            850: '#151f32',
+                            800: '#1e293b',
+                            700: '#334155'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Custom scrollbar and ambient glowing elements */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ccff00;
+        }
+        .neon-glow {
+            box-shadow: 0 0 25px -5px rgba(204, 255, 0, 0.3);
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(204, 255, 0, 0.5);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="pulseApp()" class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-neon-lime selection:text-slate-950">
+
+    <script>
+        function pulseApp() {
+            return {
+                // Products State
+                products: [
+                    {
+                        id: 'PULSE-01',
+                        name: 'Pulse VaporFly Carbon X',
+                        brand: 'Nike',
+                        category: 'Carbon Plated Racer',
+                        terrain: 'Road',
+                        price: 3899000,
+                        rating: 4.9,
+                        reviews: 128,
+                        weight: '185 gram',
+                        drop: '8 mm',
+                        foam: 'ZoomX Dual Density',
+                        pronation: 'Neutral',
+                        carbonPlate: 'Full Carbon Plate',
+                        stock: 8,
+                        badge: 'Carbon Race',
+                        isFeatured: true,
+                        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [39, 40, 41, 42, 43, 44, 45],
+                        description: 'Sepatu lari marathon kencang yang dirancang untuk memecahkan rekor pribadi. Dilengkapi plat serat karbon penuh dan busa ultra-responsif.'
+                    },
+                    {
+                        id: 'PULSE-02',
+                        name: 'Aero Stratus Max 3',
+                        brand: 'Hoka',
+                        category: 'Max Cushioning',
+                        terrain: 'Road',
+                        price: 2499000,
+                        rating: 4.8,
+                        reviews: 94,
+                        weight: '260 gram',
+                        drop: '5 mm',
+                        foam: 'UltraCloud Dual EVA',
+                        pronation: 'Neutral / Supination',
+                        carbonPlate: 'Tanpa Plat Carbon',
+                        stock: 14,
+                        badge: 'Empuk Maksimal',
+                        isFeatured: true,
+                        image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80',
+                            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [40, 41, 42, 43, 44, 46],
+                        description: 'Bantalan ekstra tebal yang memberikan kenyamanan tiada tanding untuk lari jarak jauh recovery run maupun marathon tanpa cedera.'
+                    },
+                    {
+                        id: 'PULSE-03',
+                        name: 'Gel-Nimbus Pulse 26',
+                        brand: 'Asics',
+                        category: 'Daily Trainer',
+                        terrain: 'Road',
+                        price: 2399000,
+                        rating: 4.7,
+                        reviews: 210,
+                        weight: '275 gram',
+                        drop: '8 mm',
+                        foam: 'FF Blast+ ECO & PureGEL',
+                        pronation: 'Neutral',
+                        carbonPlate: 'Tanpa Plat Carbon',
+                        stock: 19,
+                        badge: 'Best Seller',
+                        isFeatured: false,
+                        image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [39, 40, 41, 42, 43, 44, 45],
+                        description: 'Sepatu andalan harian dengan mendarat lebih lembut. Menyerap benturan secara sempurna di tiap langkah kaki.'
+                    },
+                    {
+                        id: 'PULSE-04',
+                        name: 'Endorphin Speed Pulse',
+                        brand: 'Saucony',
+                        category: 'Tempo/Speed',
+                        terrain: 'Road',
+                        price: 2799000,
+                        rating: 4.9,
+                        reviews: 86,
+                        weight: '212 gram',
+                        drop: '8 mm',
+                        foam: 'PWRRUN PB Superfoam',
+                        pronation: 'Neutral',
+                        carbonPlate: 'Nylon Winged Plate',
+                        stock: 6,
+                        badge: 'Versatile Speed',
+                        isFeatured: true,
+                        image: 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [40, 41, 42, 43, 44],
+                        description: 'Kombinasi sempurna busa balap pejal dengan plat nilon lentur. Pilihan ideal untuk tempo run, interval, hingga hari perlombaan.'
+                    },
+                    {
+                        id: 'PULSE-05',
+                        name: 'Terra Grip Trail Pro',
+                        brand: 'Hoka',
+                        category: 'Trail Running',
+                        terrain: 'Trail',
+                        price: 2699000,
+                        rating: 4.8,
+                        reviews: 62,
+                        weight: '295 gram',
+                        drop: '4 mm',
+                        foam: 'Vibram MegaGrip Dual',
+                        pronation: 'Stability',
+                        carbonPlate: 'Rock Protection Plate',
+                        stock: 10,
+                        badge: 'All-Terrain',
+                        isFeatured: false,
+                        image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [39, 41, 42, 43, 45],
+                        description: 'Traksi luar biasa untuk medan pegunungan, tanah berlumpur, dan bebatuan licin. Proteksi kaki ekstra tangguh.'
+                    },
+                    {
+                        id: 'PULSE-06',
+                        name: 'Adizero Adios Pro Pulse',
+                        brand: 'Adidas',
+                        category: 'Carbon Plated Racer',
+                        terrain: 'Road',
+                        price: 3699000,
+                        rating: 4.9,
+                        reviews: 114,
+                        weight: '198 gram',
+                        drop: '6 mm',
+                        foam: 'Lightstrike Pro Triple',
+                        pronation: 'Neutral',
+                        carbonPlate: 'EnergyRods 2.0 Carbon',
+                        stock: 5,
+                        badge: 'World Record Tech',
+                        isFeatured: true,
+                        image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [40, 41, 42, 43, 44, 45],
+                        description: 'Didesain bersama pelari maraton elit dunia. Sistem Carbon EnergyRods memberikan dorongan mekanis yang tiada tanding.'
+                    },
+                    {
+                        id: 'PULSE-07',
+                        name: 'Cloud Pulse Ultra Flow',
+                        brand: 'Nike',
+                        category: 'Daily Trainer',
+                        terrain: 'Road',
+                        price: 2899000,
+                        rating: 4.6,
+                        reviews: 48,
+                        weight: '240 gram',
+                        drop: '7 mm',
+                        foam: 'Helion Superfoam',
+                        pronation: 'Neutral',
+                        carbonPlate: 'Speedboard Integrated',
+                        stock: 11,
+                        badge: 'Ultra Smooth',
+                        isFeatured: false,
+                        image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [39, 40, 41, 42, 43, 44],
+                        description: 'Mentransformasi pendaratan menjadi dorongan maju yang alami. Desain futuristik dengan ventilasi mesh udara premium.'
+                    },
+                    {
+                        id: 'PULSE-08',
+                        name: 'Summit Trail Carbon X',
+                        brand: 'Saucony',
+                        category: 'Trail Running',
+                        terrain: 'Trail',
+                        price: 3499000,
+                        rating: 4.9,
+                        reviews: 39,
+                        weight: '255 gram',
+                        drop: '5 mm',
+                        foam: 'PWRRUN PB Trail Nitro',
+                        pronation: 'Neutral',
+                        carbonPlate: 'Carbon Fiber Rock Plate',
+                        stock: 4,
+                        badge: 'Carbon Trail',
+                        isFeatured: false,
+                        image: 'https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=800&q=80',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=800&q=80'
+                        ],
+                        sizes: [40, 41, 42, 43, 44],
+                        description: 'Sepatu lari trail berplat karbon kelas premium untuk balapan ultra trail outdoor dengan efisiensi tenaga maksimal.'
+                    }
+                ],
+
+                // Filter & Search State
+                filters: {
+                    search: '',
+                    category: 'All',
+                    brand: 'All',
+                    maxPrice: 4000000,
+                    size: 'All',
+                    sortBy: 'popular'
+                },
+
+                // Active App States
+                cart: [],
+                wishlist: [],
+                compareList: [],
+                selectedProduct: null,
+                selectedSize: null,
+                
+                // Modals Visibility
+                showQuickView: false,
+                showCartDrawer: false,
+                showCompareModal: false,
+                showSizeGuideModal: false,
+                showCheckoutModal: false,
+                showSuccessModal: false,
+                showQuizModal: false,
+
+                // Quiz Interactive State
+                quiz: {
+                    step: 1,
+                    terrain: 'Road',
+                    distance: '10k-21k',
+                    cushion: 'Maximal',
+                    recommendation: null
+                },
+
+                // Promo Coupon State
+                couponInput: '',
+                appliedDiscount: 0,
+                discountLabel: '',
+
+                // Checkout Form
+                checkoutForm: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    address: '',
+                    city: '',
+                    paymentMethod: 'qris'
+                },
+                lastOrder: null,
+
+                // Floating Toast Notification
+                toast: {
+                    show: false,
+                    message: '',
+                    type: 'success'
+                },
+
+                // Utility Methods
+                formatRupiah(number) {
+                    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+                },
+
+                triggerToast(msg, type = 'success') {
+                    this.toast.message = msg;
+                    this.toast.type = type;
+                    this.toast.show = true;
+                    setTimeout(() => { this.toast.show = false; }, 3200);
+                },
+
+                // Filter Computed Calculation
+                get filteredProducts() {
+                    return this.products.filter(p => {
+                        const matchSearch = p.name.toLowerCase().includes(this.filters.search.toLowerCase()) || 
+                                            p.brand.toLowerCase().includes(this.filters.search.toLowerCase()) ||
+                                            p.category.toLowerCase().includes(this.filters.search.toLowerCase());
+                        const matchCat = this.filters.category === 'All' || p.category === this.filters.category;
+                        const matchBrand = this.filters.brand === 'All' || p.brand === this.filters.brand;
+                        const matchPrice = p.price <= this.filters.maxPrice;
+                        const matchSize = this.filters.size === 'All' || p.sizes.includes(parseInt(this.filters.size));
+
+                        return matchSearch && matchCat && matchBrand && matchPrice && matchSize;
+                    }).sort((a, b) => {
+                        if (this.filters.sortBy === 'price-low') return a.price - b.price;
+                        if (this.filters.sortBy === 'price-high') return b.price - a.price;
+                        if (this.filters.sortBy === 'weight-light') return parseInt(a.weight) - parseInt(b.weight);
+                        return b.rating - a.rating; // Default 'popular'
+                    });
+                },
+
+                // Wishlist Toggle
+                toggleWishlist(productId) {
+                    if (this.wishlist.includes(productId)) {
+                        this.wishlist = this.wishlist.filter(id => id !== productId);
+                        this.triggerToast('Dihapus dari Wishlist', 'info');
+                    } else {
+                        this.wishlist.push(productId);
+                        this.triggerToast('Ditambahkan ke Wishlist favorit! ❤️', 'success');
+                    }
+                },
+
+                isInWishlist(productId) {
+                    return this.wishlist.includes(productId);
+                },
+
+                // Compare Toggle
+                toggleCompare(product) {
+                    const idx = this.compareList.findIndex(p => p.id === product.id);
+                    if (idx > -1) {
+                        this.compareList.splice(idx, 1);
+                        this.triggerToast('Dihapus dari pembanding', 'info');
+                    } else {
+                        if (this.compareList.length >= 3) {
+                            this.triggerToast('Maksimal membandingkan 3 sepatu sekaligus', 'error');
+                            return;
+                        }
+                        this.compareList.push(product);
+                        this.triggerToast('Ditambahkan ke modul pembanding sepatu 👟', 'success');
+                    }
+                },
+
+                isInCompare(productId) {
+                    return this.compareList.some(p => p.id === productId);
+                },
+
+                // Quick View Trigger
+                openQuickView(product) {
+                    this.selectedProduct = product;
+                    this.selectedSize = product.sizes[0];
+                    this.showQuickView = true;
+                },
+
+                // Cart Operations
+                addToCart(product, size = null) {
+                    const chosenSize = size || this.selectedSize || product.sizes[0];
+                    const existingIndex = this.cart.findIndex(item => item.product.id === product.id && item.size === chosenSize);
+
+                    if (existingIndex > -1) {
+                        this.cart[existingIndex].qty++;
+                    } else {
+                        this.cart.push({
+                            product: product,
+                            size: chosenSize,
+                            qty: 1
+                        });
+                    }
+
+                    this.triggerToast(`'${product.name}' (Size ${chosenSize}) masuk keranjang! 🛒`);
+                    if (this.showQuickView) this.showQuickView = false;
+                },
+
+                updateCartQty(index, delta) {
+                    this.cart[index].qty += delta;
+                    if (this.cart[index].qty <= 0) {
+                        this.cart.splice(index, 1);
+                        this.triggerToast('Item dihapus dari keranjang', 'info');
+                    }
+                },
+
+                get cartSubtotal() {
+                    return this.cart.reduce((sum, item) => sum + (item.product.price * item.qty), 0);
+                },
+
+                get cartDiscount() {
+                    return this.appliedDiscount;
+                },
+
+                get cartTotal() {
+                    const total = this.cartSubtotal - this.appliedDiscount;
+                    return total > 0 ? total : 0;
+                },
+
+                applyCoupon() {
+                    const code = this.couponInput.trim().toUpperCase();
+                    if (code === 'RUN2026') {
+                        this.appliedDiscount = Math.round(this.cartSubtotal * 0.15); // 15% Off
+                        this.discountLabel = 'Kupon RUN2026 (Diskon 15%)';
+                        this.triggerToast('Kupon 15% Berhasil Diterapkan! 🎉');
+                    } else if (code === 'MARATHON') {
+                        this.appliedDiscount = 200000; // Rp 200,000 Off
+                        this.discountLabel = 'Kupon MARATHON (Potongan Rp 200.000)';
+                        this.triggerToast('Kupon Potongan Rp 200.000 Diterapkan! 🎉');
+                    } else {
+                        this.triggerToast('Kode kupon tidak valid atau kadaluarsa', 'error');
+                    }
+                },
+
+                // Shoe Finder Quiz Processor
+                processQuiz() {
+                    // Smart recommendation calculation
+                    let match = this.products.find(p => p.terrain === this.quiz.terrain && p.category.includes(this.quiz.cushion === 'Maximal' ? 'Max' : 'Carbon')) || this.products[0];
+                    this.quiz.recommendation = match;
+                    this.quiz.step = 4;
+                },
+
+                resetQuiz() {
+                    this.quiz.step = 1;
+                    this.quiz.recommendation = null;
+                },
+
+                // Checkout Submission
+                submitCheckout() {
+                    if (!this.checkoutForm.name || !this.checkoutForm.phone || !this.checkoutForm.address) {
+                        this.triggerToast('Mohon lengkapi formulir pengiriman', 'error');
+                        return;
+                    }
+
+                    this.lastOrder = {
+                        orderId: 'PLS-' + Math.floor(100000 + Math.random() * 900000),
+                        date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+                        customer: { ...this.checkoutForm },
+                        items: [...this.cart],
+                        subtotal: this.cartSubtotal,
+                        discount: this.cartDiscount,
+                        total: this.cartTotal,
+                        paymentMethod: this.checkoutForm.paymentMethod.toUpperCase()
+                    };
+
+                    this.cart = [];
+                    this.appliedDiscount = 0;
+                    this.couponInput = '';
+                    this.showCheckoutModal = false;
+                    this.showSuccessModal = true;
+                    this.triggerToast('Pesanan Berhasil Dibuat! 🚀');
+                }
+            }
+        }
+    </script>
+
+    <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-neon-lime flex items-center justify-center text-slate-950 font-black text-xl transform -rotate-6 group-hover:rotate-0 transition-transform shadow-lg shadow-neon-lime/20">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-white flex items-center gap-1">
+                        DIMAS<span class="text-neon-lime text-xs font-semibold px-1.5 py-0.5 rounded bg-neon-lime/10 border border-neon-lime/30 tracking-normal">STORE</span>
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Performance Gear</span>
+                </div>
+            </a>
+
+            <!-- Quick Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input 
+                    type="text" 
+                    x-model="filters.search"
+                    placeholder="Cari sepatu (misal: Vaporfly, Carbon, Hoka, Trail)..." 
+                    class="w-full bg-slate-900 border border-slate-800 text-slate-200 text-sm rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:border-neon-lime/60 focus:ring-1 focus:ring-neon-lime/60 transition-all placeholder:text-slate-500"
+                >
+            </div>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Shoe Finder Quiz Launcher -->
+                <button 
+                    @click="showQuizModal = true"
+                    class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold bg-slate-900 border border-slate-800 hover:border-neon-lime/50 text-slate-200 hover:text-neon-lime transition-all"
+                >
+                    <i class="fa-solid fa-sliders text-neon-lime"></i>
+                    <span>Shoe Finder</span>
+                </button>
+
+                <!-- Compare Drawer Trigger Button -->
+                <button 
+                    @click="showCompareModal = true"
+                    class="relative p-2.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-neon-lime hover:border-neon-lime/40 transition-all"
+                    title="Bandingkan Sepatu"
+                >
+                    <i class="fa-solid fa-code-compare text-sm"></i>
+                    <span 
+                        x-show="compareList.length > 0"
+                        x-text="compareList.length"
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-neon-cyan text-slate-950 font-bold text-[10px] rounded-full flex items-center justify-center border-2 border-slate-950"
+                    ></span>
+                </button>
+
+                <!-- Wishlist Badge -->
+                <button 
+                    @click="filters.category = 'All'; $anchor = 'katalog'"
+                    class="relative p-2.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-rose-400 hover:border-rose-500/40 transition-all"
+                    title="Wishlist"
+                >
+                    <i class="fa-solid fa-heart text-sm"></i>
+                    <span 
+                        x-show="wishlist.length > 0"
+                        x-text="wishlist.length"
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white font-bold text-[10px] rounded-full flex items-center justify-center border-2 border-slate-950"
+                    ></span>
+                </button>
+
+                <!-- Shopping Cart Trigger Button -->
+                <button 
+                    @click="showCartDrawer = true"
+                    class="flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-neon-lime text-slate-950 hover:bg-neon-limeHover font-bold text-xs transition-all shadow-lg shadow-neon-lime/20"
+                >
+                    <div class="relative">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span 
+                            x-show="cart.length > 0"
+                            x-text="cart.reduce((a,b)=>a+b.qty, 0)"
+                            class="absolute -top-2 -right-2 w-4 h-4 bg-slate-950 text-neon-lime text-[9px] rounded-full flex items-center justify-center font-extrabold"
+                        ></span>
+                    </div>
+                    <span class="hidden lg:inline" x-text="formatRupiah(cartTotal)"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Search Input -->
+        <div class="px-4 pb-3 md:hidden">
+            <div class="relative w-full">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input 
+                    type="text" 
+                    x-model="filters.search"
+                    placeholder="Cari sepatu running..." 
+                    class="w-full bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-neon-lime/60 placeholder:text-slate-500"
+                >
+            </div>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden bg-slate-950 pt-8 pb-16 lg:py-24 border-b border-slate-800/60">
+        <!-- Background Ambient Lighting Gradients -->
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-neon-lime/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-neon-lime/30 text-neon-lime text-xs font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-neon-lime animate-pulse"></span>
+                        Koleksi Sepatu Lari Terbaru 2026
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        LARI LEBIH <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-lime via-emerald-300 to-neon-cyan">KENCANG.</span><br>
+                        GAYA LEBIH ELITE.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Temukan sepatu running performa tinggi berteknologi <span class="text-slate-200 font-semibold">Carbon Plate</span> & <span class="text-slate-200 font-semibold">Max Cushioning</span> terkemuka dari brand terpercaya. Dirancang untuk efisiensi stride maksimal.
+                    </p>
+
+                    <!-- Hero Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a 
+                            href="#katalog" 
+                            class="w-full sm:w-auto px-8 py-4 rounded-full bg-neon-lime text-slate-950 font-extrabold text-sm uppercase tracking-wider hover:bg-neon-limeHover transition-all shadow-lg shadow-neon-lime/25 flex items-center justify-center gap-3"
+                        >
+                            <span>Jelajahi Katalog</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <button 
+                            @click="showQuizModal = true" 
+                            class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900 border border-slate-700 hover:border-neon-lime text-slate-200 hover:text-neon-lime font-bold text-sm transition-all flex items-center justify-center gap-3"
+                        >
+                            <i class="fa-solid fa-wand-magic-sparkles text-neon-lime"></i>
+                            <span>Cari Sepatu Ideal (Shoe Finder)</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Guarantee Stats Bar -->
+                    <div class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="text-lg font-extrabold text-white">100% Original</div>
+                            <div class="text-xs text-slate-400">Jaminan Garansi Resmi</div>
+                        </div>
+                        <div>
+                            <div class="text-lg font-extrabold text-white">Gratis Ongkir</div>
+                            <div class="text-xs text-slate-400">Seluruh Wilayah Indonesia</div>
+                        </div>
+                        <div>
+                            <div class="text-lg font-extrabold text-white">30 Hari Garansi</div>
+                            <div class="text-xs text-slate-400">Tukar Ukuran Tanpa Ribet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column Visual Banner -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-neon-lime/20 to-neon-cyan/20 rounded-3xl transform rotate-3 blur-sm"></div>
+                        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-6 overflow-hidden">
+                            <div class="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-700 text-xs text-neon-lime font-bold">
+                                Featured Race Shoe
+                            </div>
+                            <img 
+                                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" 
+                                alt="Pulse VaporFly Carbon" 
+                                class="w-full h-72 sm:h-80 object-cover rounded-2xl transform -rotate-6 hover:rotate-0 transition-transform duration-500"
+                            >
+                            <div class="mt-4 flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white">Pulse VaporFly Carbon X</h3>
+                                    <p class="text-xs text-slate-400">Carbon Race • 185 Grams</p>
+                                </div>
+                                <span class="text-neon-lime font-extrabold text-base">Rp 3.899.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shoe Finder Section Banner / Quick Trigger Card -->
+    <section class="py-12 bg-slate-900/60 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-10 top-0 w-64 h-64 bg-neon-lime/5 rounded-full blur-2xl"></div>
+                <div class="space-y-2 text-center md:text-left z-10">
+                    <span class="text-neon-lime text-xs font-bold uppercase tracking-wider">Kuis Interaktif 3 Langkah</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Bingung Memilih Sepatu Lari Yang Pas?</h2>
+                    <p class="text-slate-400 text-sm max-w-xl">Gunakan fitur Shoe Finder kami untuk mencocokkan tipe telapak kaki, jarak tempuh, dan preferensi bantalan Anda secara presisi.</p>
+                </div>
+                <button 
+                    @click="showQuizModal = true"
+                    class="whitespace-nowrap px-6 py-3.5 rounded-full bg-neon-lime text-slate-950 font-extrabold text-sm hover:bg-neon-limeHover transition-all shadow-lg shadow-neon-lime/20 z-10 flex items-center gap-2"
+                >
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Mulai Kuis Rekomendasi</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main id="katalog" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Section Title & Filter Summary Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-8 border-b border-slate-800">
+            <div>
+                <div class="text-neon-lime text-xs font-bold uppercase tracking-wider mb-1">Katalog Resmi</div>
+                <h2 class="text-3xl font-extrabold text-white tracking-tight">Koleksi Sepatu Lari</h2>
+            </div>
+
+            <!-- Sorting & Result Counter Controls -->
+            <div class="flex items-center justify-between md:justify-end gap-4">
+                <span class="text-xs text-slate-400 font-medium">
+                    Menampilkan <strong class="text-neon-lime" x-text="filteredProducts.length"></strong> model sepatu
+                </span>
+
+                <div class="flex items-center gap-2">
+                    <label for="sortSelect" class="text-xs text-slate-400 hidden sm:inline">Urutkan:</label>
+                    <select 
+                        id="sortSelect"
+                        x-model="filters.sortBy"
+                        class="bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-neon-lime"
+                    >
+                        <option value="popular">Paling Populer & Rating</option>
+                        <option value="price-low">Harga: Termurah ke Termahal</option>
+                        <option value="price-high">Harga: Termahal ke Termurah</option>
+                        <option value="weight-light">Bobot: Terringan (Gram)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
+            
+            <!-- Left Sidebar Filter Controls -->
+            <aside class="space-y-6 lg:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 h-fit sticky top-28">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <i class="fa-solid fa-filter text-neon-lime text-xs"></i>
+                        <span>Filter Produk</span>
+                    </h3>
+                    <button 
+                        @click="filters = { search: '', category: 'All', brand: 'All', maxPrice: 4000000, size: 'All', sortBy: 'popular' }"
+                        class="text-xs text-slate-400 hover:text-neon-lime transition-colors"
+                    >
+                        Reset All
+                    </button>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-300 uppercase tracking-wider">Kategori Lari</label>
+                    <div class="flex flex-col gap-1.5 pt-1">
+                        <template x-for="cat in ['All', 'Carbon Plated Racer', 'Daily Trainer', 'Max Cushioning', 'Trail Running', 'Tempo/Speed']">
+                            <button 
+                                @click="filters.category = cat"
+                                :class="filters.category === cat ? 'bg-neon-lime/10 text-neon-lime border-neon-lime/40 font-bold' : 'bg-slate-950/60 text-slate-400 border-slate-800/60 hover:text-slate-200'"
+                                class="text-left text-xs px-3 py-2 rounded-xl border transition-all flex items-center justify-between"
+                            >
+                                <span x-text="cat === 'All' ? 'Semua Kategori' : cat"></span>
+                                <i x-show="filters.category === cat" class="fa-solid fa-check text-[10px]"></i>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-300 uppercase tracking-wider">Brand / Merek</label>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <template x-for="b in ['All', 'Nike', 'Hoka', 'Asics', 'Saucony', 'Adidas']">
+                            <button 
+                                @click="filters.brand = b"
+                                :class="filters.brand === b ? 'bg-neon-lime text-slate-950 font-extrabold' : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-white'"
+                                class="text-center text-xs py-2 rounded-xl transition-all"
+                                x-text="b === 'All' ? 'Semua Brand' : b"
+                            ></button>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Price Range Slider -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center text-xs">
+                        <label class="font-bold text-slate-300 uppercase tracking-wider">Maksimal Harga</label>
+                        <span class="text-neon-lime font-bold" x-text="formatRupiah(filters.maxPrice)"></span>
+                    </div>
+                    <input 
+                        type="range" 
+                        min="2000000" 
+                        max="4000000" 
+                        step="100000" 
+                        x-model="filters.maxPrice"
+                        class="w-full accent-neon-lime bg-slate-950 h-2 rounded-lg cursor-pointer"
+                    >
+                </div>
+
+                <!-- Size Selector Filter -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ukuran Sepatu (EU)</label>
+                    <div class="grid grid-cols-4 gap-2 pt-1">
+                        <button 
+                            @click="filters.size = 'All'"
+                            :class="filters.size === 'All' ? 'bg-neon-lime text-slate-950 font-bold' : 'bg-slate-950 text-slate-400 border border-slate-800'"
+                            class="text-xs py-2 rounded-lg transition-all"
+                        >All</button>
+                        <template x-for="sz in [39, 40, 41, 42, 43, 44, 45, 46]">
+                            <button 
+                                @click="filters.size = sz.toString()"
+                                :class="filters.size === sz.toString() ? 'bg-neon-lime text-slate-950 font-bold' : 'bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700'"
+                                class="text-xs py-2 rounded-lg transition-all"
+                                x-text="sz"
+                            ></button>
+                        </template>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Product Grid Area -->
+            <section class="lg:col-span-3">
+                
+                <!-- Empty State Alert -->
+                <div x-show="filteredProducts.length === 0" class="text-center py-16 bg-slate-900/40 rounded-3xl border border-slate-800/80 p-8 space-y-4">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-slate-400 text-2xl">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Sepatu tidak ditemukan</h3>
+                    <p class="text-slate-400 text-sm max-w-sm mx-auto">Coba sesuaikan kata kunci pencarian atau reset filter untuk melihat katalog sepatu lainnya.</p>
+                    <button 
+                        @click="filters = { search: '', category: 'All', brand: 'All', maxPrice: 4000000, size: 'All', sortBy: 'popular' }"
+                        class="px-5 py-2.5 rounded-full bg-neon-lime text-slate-950 font-bold text-xs hover:bg-neon-limeHover transition-all"
+                    >
+                        Reset Filter
+                    </button>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <template x-for="product in filteredProducts" :key="product.id">
+                        <div class="group bg-slate-900 border border-slate-800/80 hover:border-neon-lime/40 rounded-3xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-neon-lime/5 relative">
+                            
+                            <!-- Card Header Badges & Actions -->
+                            <div>
+                                <div class="relative rounded-2xl overflow-hidden bg-slate-950 mb-4 h-52 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
+                                    <span 
+                                        x-text="product.badge" 
+                                        class="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-neon-lime border border-neon-lime/30"
+                                    ></span>
+
+                                    <!-- Wishlist Button -->
+                                    <button 
+                                        @click="toggleWishlist(product.id)"
+                                        class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-slate-950/80 backdrop-blur-md flex items-center justify-center text-slate-300 hover:text-rose-400 transition-colors"
+                                    >
+                                        <i class="fa-solid fa-heart text-xs" :class="isInWishlist(product.id) ? 'text-rose-500' : ''"></i>
+                                    </button>
+
+                                    <!-- Product Image -->
+                                    <img 
+                                        :src="product.image" 
+                                        :alt="product.name" 
+                                        class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
+                                    >
+
+                                    <!-- Quick View Overlay Trigger -->
+                                    <button 
+                                        @click="openQuickView(product)"
+                                        class="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-950/90 text-white hover:text-neon-lime px-4 py-2 rounded-full text-xs font-bold border border-slate-700 whitespace-nowrap shadow-xl"
+                                    >
+                                        <i class="fa-solid fa-eye mr-1"></i> Quick View
+                                    </button>
+                                </div>
+
+                                <!-- Brand & Category Meta -->
+                                <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                                    <span class="font-bold text-slate-300" x-text="product.brand"></span>
+                                    <span class="flex items-center gap-1 text-amber-400 font-semibold">
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                        <span x-text="product.rating"></span>
+                                        <span class="text-slate-500 text-[10px]" x-text="'(' + product.reviews + ')'"></span>
+                                    </span>
+                                </div>
+
+                                <!-- Title -->
+                                <h3 class="text-base font-bold text-white group-hover:text-neon-lime transition-colors line-clamp-1 mb-2" x-text="product.name"></h3>
+
+                                <!-- Tech Badges Row -->
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium" x-text="product.weight"></span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium" x-text="'Drop ' + product.drop"></span>
+                                    <span 
+                                        x-show="product.carbonPlate.includes('Carbon')" 
+                                        class="text-[10px] px-2 py-0.5 rounded bg-neon-lime/10 text-neon-lime font-bold border border-neon-lime/20"
+                                    >Carbon Plate</span>
+                                </div>
+                            </div>
+
+                            <!-- Price & Bottom Actions -->
+                            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-[10px] text-slate-400 uppercase font-medium">Harga</div>
+                                    <div class="text-sm font-extrabold text-white" x-text="formatRupiah(product.price)"></div>
+                                </div>
+
+                                <div class="flex items-center gap-1.5">
+                                    <!-- Compare Trigger -->
+                                    <button 
+                                        @click="toggleCompare(product)"
+                                        :class="isInCompare(product.id) ? 'bg-neon-cyan text-slate-950' : 'bg-slate-800 text-slate-300 hover:text-white'"
+                                        class="w-9 h-9 rounded-xl flex items-center justify-center text-xs transition-colors"
+                                        title="Bandingkan Sepatu"
+                                    >
+                                        <i class="fa-solid fa-code-compare"></i>
+                                    </button>
+
+                                    <!-- Add to Cart -->
+                                    <button 
+                                        @click="addToCart(product)"
+                                        class="w-9 h-9 rounded-xl bg-neon-lime text-slate-950 font-bold hover:bg-neon-limeHover flex items-center justify-center text-xs transition-all shadow-md shadow-neon-lime/10"
+                                        title="Tambah ke Keranjang"
+                                    >
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Quick View / Product Detail Modal -->
+    <div 
+        x-cloak
+        x-show="showQuickView" 
+        class="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+    >
+        <div @click.away="showQuickView = false" class="bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl my-8">
+            <button @click="showQuickView = false" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <template x-if="selectedProduct">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Left Photo & Gallery Swatches -->
+                    <div class="space-y-4">
+                        <div class="rounded-2xl overflow-hidden bg-slate-950 h-72">
+                            <img :src="selectedProduct.image" :alt="selectedProduct.name" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Mini Multi-angle Gallery Swatches -->
+                        <div class="flex gap-2">
+                            <template x-for="(img, idx) in selectedProduct.gallery" :key="idx">
+                                <button 
+                                    @click="selectedProduct.image = img"
+                                    class="w-16 h-16 rounded-xl border border-slate-800 overflow-hidden bg-slate-950 hover:border-neon-lime transition-all focus:outline-none"
+                                >
+                                    <img :src="img" class="w-full h-full object-cover">
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Right Specifications & Options -->
+                    <div class="flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-full bg-neon-lime/10 text-neon-lime text-[10px] font-bold uppercase" x-text="selectedProduct.category"></span>
+                                <span class="text-xs text-slate-400" x-text="selectedProduct.brand"></span>
+                            </div>
+                            <h2 class="text-2xl font-extrabold text-white" x-text="selectedProduct.name"></h2>
+                            <div class="text-xl font-extrabold text-neon-lime mt-1" x-text="formatRupiah(selectedProduct.price)"></div>
+
+                            <p class="text-xs text-slate-400 mt-3 leading-relaxed" x-text="selectedProduct.description"></p>
+
+                            <!-- Technical Specs Table -->
+                            <div class="mt-4 p-3.5 bg-slate-950/80 rounded-2xl border border-slate-800/80 grid grid-cols-2 gap-2 text-xs">
+                                <div><span class="text-slate-500">Bobot:</span> <strong class="text-slate-200" x-text="selectedProduct.weight"></strong></div>
+                                <div><span class="text-slate-500">Heel Drop:</span> <strong class="text-slate-200" x-text="selectedProduct.drop"></strong></div>
+                                <div><span class="text-slate-500">Busa Cushion:</span> <strong class="text-slate-200" x-text="selectedProduct.foam"></strong></div>
+                                <div><span class="text-slate-500">Plat Carbon:</span> <strong class="text-slate-200" x-text="selectedProduct.carbonPlate"></strong></div>
+                            </div>
+
+                            <!-- Interactive Size Picker -->
+                            <div class="mt-4 space-y-2">
+                                <div class="flex justify-between items-center text-xs">
+                                    <label class="font-bold text-slate-300">Pilih Ukuran (EU):</label>
+                                    <button @click="showSizeGuideModal = true" class="text-neon-lime underline hover:text-white text-[11px]">Panduan Ukuran (Size Guide)</button>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <template x-for="sz in selectedProduct.sizes" :key="sz">
+                                        <button 
+                                            @click="selectedSize = sz"
+                                            :class="selectedSize === sz ? 'bg-neon-lime text-slate-950 font-extrabold border-neon-lime' : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700'"
+                                            class="w-10 h-10 rounded-xl border text-xs font-bold transition-all flex items-center justify-center"
+                                            x-text="sz"
+                                        ></button>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Actions -->
+                        <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+                            <button 
+                                @click="addToCart(selectedProduct, selectedSize)"
+                                class="flex-1 py-3.5 rounded-2xl bg-neon-lime text-slate-950 font-extrabold text-xs uppercase tracking-wider hover:bg-neon-limeHover transition-all shadow-lg shadow-neon-lime/20 flex items-center justify-center gap-2"
+                            >
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>Tambah ke Keranjang</span>
+                            </button>
+                            <button 
+                                @click="toggleCompare(selectedProduct)"
+                                :class="isInCompare(selectedProduct.id) ? 'bg-neon-cyan text-slate-950' : 'bg-slate-800 text-slate-300 hover:text-white'"
+                                class="px-4 py-3.5 rounded-2xl text-xs font-bold transition-colors flex items-center gap-1.5"
+                            >
+                                <i class="fa-solid fa-code-compare"></i>
+                                <span>Bandingkan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Size Guide Modal -->
+    <div 
+        x-cloak
+        x-show="showSizeGuideModal" 
+        class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4"
+    >
+        <div @click.away="showSizeGuideModal = false" class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl">
+            <button @click="showSizeGuideModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="text-xl font-bold text-white mb-2">Panduan Ukuran Sepatu Running</h3>
+            <p class="text-xs text-slate-400 mb-4">Ukur panjang telapak kaki Anda dari tumit hingga ujung jari terpanjang dalam sentimeter (CM).</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left text-slate-300 border border-slate-800 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-950 text-neon-lime uppercase text-[10px]">
+                        <tr>
+                            <th class="p-3">EU</th>
+                            <th class="p-3">US (Men)</th>
+                            <th class="p-3">UK</th>
+                            <th class="p-3">Panjang Kaki (CM)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 bg-slate-900">
+                        <tr><td class="p-3 font-bold">39</td><td class="p-3">6.5</td><td class="p-3">5.5</td><td class="p-3">24.5 cm</td></tr>
+                        <tr><td class="p-3 font-bold">40</td><td class="p-3">7.0</td><td class="p-3">6.0</td><td class="p-3">25.0 cm</td></tr>
+                        <tr><td class="p-3 font-bold">41</td><td class="p-3">8.0</td><td class="p-3">7.0</td><td class="p-3">26.0 cm</td></tr>
+                        <tr><td class="p-3 font-bold">42</td><td class="p-3">8.5</td><td class="p-3">7.5</td><td class="p-3">26.5 cm</td></tr>
+                        <tr><td class="p-3 font-bold">43</td><td class="p-3">9.5</td><td class="p-3">8.5</td><td class="p-3">27.5 cm</td></tr>
+                        <tr><td class="p-3 font-bold">44</td><td class="p-3">10.0</td><td class="p-3">9.0</td><td class="p-3">28.0 cm</td></tr>
+                        <tr><td class="p-3 font-bold">45</td><td class="p-3">11.0</td><td class="p-3">10.0</td><td class="p-3">29.0 cm</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-[11px] text-amber-400/90 mt-4 bg-amber-500/10 p-3 rounded-xl border border-amber-500/20">
+                💡 <strong class="font-semibold">Tips Runner:</strong> Untuk marathon & lari jarak jauh, disarankan naik 0.5 - 1 size (up-size) dari ukuran normal agar ada ruang saat kaki memuai.
+            </p>
+        </div>
+    </div>
+
+    <!-- Shoe Comparison Drawer / Modal -->
+    <div 
+        x-cloak
+        x-show="showCompareModal" 
+        class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4"
+    >
+        <div @click.away="showCompareModal = false" class="bg-slate-900 border border-slate-800 rounded-3xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code-compare text-neon-cyan"></i>
+                        <span>Pembanding Sepatu Lari Side-by-Side</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Bandingkan hingga 3 sepatu sekaligus berdasarkan spesifikasi teknis.</p>
+                </div>
+                <button @click="showCompareModal = false" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div x-show="compareList.length === 0" class="text-center py-12 text-slate-400 text-xs">
+                Belum ada sepatu yang dipilih untuk dibandingkan. Klik ikon pembanding <i class="fa-solid fa-code-compare"></i> pada kartu produk.
+            </div>
+
+            <div x-show="compareList.length > 0" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <template x-for="item in compareList" :key="item.id">
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 relative space-y-3">
+                        <button @click="toggleCompare(item)" class="absolute top-2 right-2 w-6 h-6 rounded-full bg-slate-800 text-slate-400 hover:text-rose-400 text-xs flex items-center justify-center">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <img :src="item.image" :alt="item.name" class="w-full h-36 object-cover rounded-xl">
+                        <h4 class="font-bold text-white text-sm" x-text="item.name"></h4>
+                        <div class="text-neon-lime font-extrabold text-sm" x-text="formatRupiah(item.price)"></div>
+
+                        <div class="space-y-2 pt-2 border-t border-slate-800 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">Bobot:</span><span class="text-slate-200 font-semibold" x-text="item.weight"></span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Heel Drop:</span><span class="text-slate-200 font-semibold" x-text="item.drop"></span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Busa Cushion:</span><span class="text-slate-200 font-semibold" x-text="item.foam"></span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Plat Carbon:</span><span class="text-neon-lime font-semibold" x-text="item.carbonPlate"></span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Pronasi:</span><span class="text-slate-200 font-semibold" x-text="item.pronation"></span></div>
+                        </div>
+
+                        <button @click="addToCart(item); showCompareModal = false" class="w-full py-2.5 rounded-xl bg-neon-lime text-slate-950 font-bold text-xs hover:bg-neon-limeHover mt-2">
+                            Pilih & Beli
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-over Shopping Cart Drawer -->
+    <div 
+        x-cloak
+        x-show="showCartDrawer" 
+        class="fixed inset-0 z-50 overflow-hidden"
+    >
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" @click="showCartDrawer = false"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl relative">
+                
+                <!-- Drawer Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-neon-lime"></i>
+                        <h3 class="text-lg font-extrabold text-white">Keranjang Belanja</h3>
+                    </div>
+                    <button @click="showCartDrawer = false" class="text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div class="flex-1 overflow-y-auto py-4 space-y-4">
+                    <div x-show="cart.length === 0" class="text-center py-16 text-slate-500 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-slate-700"></i>
+                        <p class="text-sm">Keranjang belanja Anda masih kosong.</p>
+                    </div>
+
+                    <template x-for="(item, index) in cart" :key="index">
+                        <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 flex gap-3 items-center">
+                            <img :src="item.product.image" :alt="item.product.name" class="w-16 h-16 object-cover rounded-xl bg-slate-900">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-xs font-bold text-white truncate" x-text="item.product.name"></h4>
+                                <div class="text-[11px] text-slate-400">Size: <strong class="text-neon-lime" x-text="item.size"></strong></div>
+                                <div class="text-xs font-extrabold text-white mt-1" x-text="formatRupiah(item.product.price)"></div>
+                            </div>
+
+                            <!-- Qty Adjuster -->
+                            <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-2 py-1 rounded-xl">
+                                <button @click="updateCartQty(index, -1)" class="text-slate-400 hover:text-white text-xs px-1">-</button>
+                                <span class="text-xs font-bold text-neon-lime" x-text="item.qty"></span>
+                                <button @click="updateCartQty(index, 1)" class="text-slate-400 hover:text-white text-xs px-1">+</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Promo Coupon & Price Summary Footer -->
+                <div x-show="cart.length > 0" class="pt-4 border-t border-slate-800 space-y-4">
+                    
+                    <!-- Coupon Input -->
+                    <div class="space-y-1">
+                        <div class="flex gap-2">
+                            <input 
+                                type="text" 
+                                x-model="couponInput"
+                                placeholder="Kode Kupon (RUN2026 / MARATHON)" 
+                                class="flex-1 bg-slate-950 border border-slate-800 text-xs rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-neon-lime uppercase"
+                            >
+                            <button @click="applyCoupon()" class="px-4 py-2 rounded-xl bg-slate-800 text-neon-lime font-bold text-xs hover:bg-slate-700">Gunakan</button>
+                        </div>
+                        <span x-show="appliedDiscount > 0" class="text-[10px] text-emerald-400 font-semibold block" x-text="'✔ ' + discountLabel"></span>
+                    </div>
+
+                    <!-- Breakdown -->
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between text-slate-400"><span>Subtotal</span><span x-text="formatRupiah(cartSubtotal)"></span></div>
+                        <div x-show="appliedDiscount > 0" class="flex justify-between text-emerald-400"><span>Diskon Kupon</span><span x-text="'- ' + formatRupiah(cartDiscount)"></span></div>
+                        <div class="flex justify-between text-slate-400"><span>Ongkos Kirim</span><span class="text-neon-lime font-bold">GRATIS</span></div>
+                        <div class="flex justify-between text-sm font-extrabold text-white pt-2 border-t border-slate-800">
+                            <span>Total Pembayaran</span>
+                            <span class="text-neon-lime" x-text="formatRupiah(cartTotal)"></span>
+                        </div>
+                    </div>
+
+                    <button 
+                        @click="showCartDrawer = false; showCheckoutModal = true"
+                        class="w-full py-3.5 rounded-2xl bg-neon-lime text-slate-950 font-extrabold text-xs uppercase tracking-wider hover:bg-neon-limeHover transition-all shadow-lg shadow-neon-lime/20 flex items-center justify-center gap-2"
+                    >
+                        <span>Lanjut Ke Checkout</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div 
+        x-cloak
+        x-show="showCheckoutModal" 
+        class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto"
+    >
+        <div @click.away="showCheckoutModal = false" class="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl my-8">
+            <button @click="showCheckoutModal = false" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="text-2xl font-extrabold text-white mb-1">Pengiriman & Pembayaran</h3>
+            <p class="text-xs text-slate-400 mb-6">Lengkapi data Anda untuk memproses pesanan sepatu running.</p>
+
+            <form @submit.prevent="submitCheckout()" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-300 mb-1">Nama Lengkap *</label>
+                    <input type="text" x-model="checkoutForm.name" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-neon-lime">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold text-slate-300 mb-1">Nomor WhatsApp / HP *</label>
+                        <input type="tel" x-model="checkoutForm.phone" required placeholder="08123456789" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-neon-lime">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-300 mb-1">Email</label>
+                        <input type="email" x-model="checkoutForm.email" placeholder="budi@example.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-neon-lime">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-300 mb-1">Alamat Lengkap Pengiriman *</label>
+                    <textarea x-model="checkoutForm.address" required rows="2" placeholder="Nama Jalan, Nomor Rumah, RT/RW, Kecamatan, Kota" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-neon-lime"></textarea>
+                </div>
+
+                <!-- Payment Method Radio Selection -->
+                <div class="space-y-2">
+                    <label class="block font-bold text-slate-300">Pilihan Metode Pembayaran</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label :class="checkoutForm.paymentMethod === 'qris' ? 'border-neon-lime bg-neon-lime/10' : 'border-slate-800 bg-slate-950'" class="p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all">
+                            <input type="radio" x-model="checkoutForm.paymentMethod" value="qris" class="accent-neon-lime">
+                            <div class="font-bold text-white">QRIS Instant</div>
+                        </label>
+                        <label :class="checkoutForm.paymentMethod === 'va_bca' ? 'border-neon-lime bg-neon-lime/10' : 'border-slate-800 bg-slate-950'" class="p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all">
+                            <input type="radio" x-model="checkoutForm.paymentMethod" value="va_bca" class="accent-neon-lime">
+                            <div class="font-bold text-white">Virtual Account BCA</div>
+                        </label>
+                        <label :class="checkoutForm.paymentMethod === 'ewallet' ? 'border-neon-lime bg-neon-lime/10' : 'border-slate-800 bg-slate-950'" class="p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all">
+                            <input type="radio" x-model="checkoutForm.paymentMethod" value="ewallet" class="accent-neon-lime">
+                            <div class="font-bold text-white">GoPay / OVO / ShopeePay</div>
+                        </label>
+                        <label :class="checkoutForm.paymentMethod === 'cod' ? 'border-neon-lime bg-neon-lime/10' : 'border-slate-800 bg-slate-950'" class="p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all">
+                            <input type="radio" x-model="checkoutForm.paymentMethod" value="cod" class="accent-neon-lime">
+                            <div class="font-bold text-white">Bayar Ditempat (COD)</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Total Summary -->
+                <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span class="text-slate-400">Total Yang Harus Dibayar:</span>
+                    <span class="text-base font-extrabold text-neon-lime" x-text="formatRupiah(cartTotal)"></span>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-2xl bg-neon-lime text-slate-950 font-extrabold text-xs uppercase tracking-wider hover:bg-neon-limeHover transition-all shadow-lg shadow-neon-lime/20">
+                    Konfirmasi & Buat Pesanan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Success Receipt Modal -->
+    <div 
+        x-cloak
+        x-show="showSuccessModal" 
+        class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4"
+    >
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center space-y-4 shadow-2xl relative">
+            <div class="w-16 h-16 rounded-full bg-neon-lime/20 text-neon-lime flex items-center justify-center mx-auto text-2xl animate-bounce">
+                <i class="fa-solid fa-check-double"></i>
+            </div>
+
+            <h3 class="text-2xl font-extrabold text-white">Pesanan Berhasil Diselesaikan!</h3>
+            <p class="text-xs text-slate-400">Terima kasih telah berbelanja di dimasstore. Struk digital pesanan Anda telah diterbitkan.</p>
+
+            <template x-if="lastOrder">
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-left text-xs space-y-2">
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-500">ID Pesanan:</span>
+                        <strong class="text-neon-lime" x-text="lastOrder.orderId"></strong>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Pemesan:</span>
+                        <span class="text-slate-200" x-text="lastOrder.customer.name"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Metode Pembayaran:</span>
+                        <span class="text-slate-200 font-semibold" x-text="lastOrder.paymentMethod"></span>
+                    </div>
+                    <div class="flex justify-between pt-2 border-t border-slate-800 font-bold">
+                        <span class="text-slate-300">Total Bayar:</span>
+                        <span class="text-neon-lime text-sm" x-text="formatRupiah(lastOrder.total)"></span>
+                    </div>
+                </div>
+            </template>
+
+            <button @click="showSuccessModal = false" class="w-full py-3 rounded-2xl bg-slate-800 text-white font-bold text-xs hover:bg-slate-700 transition-colors">
+                Tutup & Kembali Belanja
+            </button>
+        </div>
+    </div>
+
+    <!-- Shoe Finder Interactive Quiz Modal -->
+    <div 
+        x-cloak
+        x-show="showQuizModal" 
+        class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4"
+    >
+        <div @click.away="showQuizModal = false" class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button @click="showQuizModal = false" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-neon-lime text-xs font-bold uppercase tracking-wider">Shoe Finder Engine</span>
+                <h3 class="text-xl font-extrabold text-white">Rekomendasi Sepatu Lari Presisi</h3>
+            </div>
+
+            <!-- Quiz Step 1: Terrain -->
+            <div x-show="quiz.step === 1" class="space-y-4">
+                <label class="block text-xs font-bold text-slate-300">Langkah 1/3: Dimana Anda Paling Sering Lari?</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button @click="quiz.terrain = 'Road'; quiz.step = 2" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left space-y-1">
+                        <i class="fa-solid fa-road text-neon-lime text-lg"></i>
+                        <div class="font-bold text-white text-xs">Road & Aspal</div>
+                        <div class="text-[10px] text-slate-400">Jalan raya, trotoar & gym</div>
+                    </button>
+                    <button @click="quiz.terrain = 'Trail'; quiz.step = 2" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left space-y-1">
+                        <i class="fa-solid fa-mountain text-neon-lime text-lg"></i>
+                        <div class="font-bold text-white text-xs">Trail & Outdoor</div>
+                        <div class="text-[10px] text-slate-400">Tanah, bebatuan & hutan</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Step 2: Distance -->
+            <div x-show="quiz.step === 2" class="space-y-4">
+                <label class="block text-xs font-bold text-slate-300">Langkah 2/3: Berapa Target Jarak Tempuh Anda?</label>
+                <div class="space-y-2">
+                    <button @click="quiz.distance = '5k-10k'; quiz.step = 3" class="w-full p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left font-bold text-white text-xs">
+                        5K - 10K (Latihan Harian / Casual)
+                    </button>
+                    <button @click="quiz.distance = '21k-42k'; quiz.step = 3" class="w-full p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left font-bold text-white text-xs">
+                        21K - 42K (Half / Full Marathon Race)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Step 3: Cushioning -->
+            <div x-show="quiz.step === 3" class="space-y-4">
+                <label class="block text-xs font-bold text-slate-300">Langkah 3/3: Preferensi Bantalan (Cushion)?</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button @click="quiz.cushion = 'Maximal'; processQuiz()" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left space-y-1">
+                        <div class="font-bold text-white text-xs">Empuk Maksimal</div>
+                        <div class="text-[10px] text-slate-400">Proteksi sendi ekstra</div>
+                    </button>
+                    <button @click="quiz.cushion = 'Responsive'; processQuiz()" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-neon-lime text-left space-y-1">
+                        <div class="font-bold text-white text-xs">Responsive & Kencang</div>
+                        <div class="text-[10px] text-slate-400">Efisiensi pantulan tinggi</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Step 4: Result Output -->
+            <div x-show="quiz.step === 4" class="space-y-4 text-center">
+                <span class="px-3 py-1 rounded-full bg-neon-lime/20 text-neon-lime text-xs font-bold">Matching Rate 98%!</span>
+                <template x-if="quiz.recommendation">
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-neon-lime/40 space-y-3 text-left">
+                        <img :src="quiz.recommendation.image" :alt="quiz.recommendation.name" class="w-full h-40 object-cover rounded-xl">
+                        <h4 class="font-bold text-white text-base" x-text="quiz.recommendation.name"></h4>
+                        <p class="text-xs text-slate-400" x-text="quiz.recommendation.description"></p>
+                        <div class="text-neon-lime font-extrabold text-base" x-text="formatRupiah(quiz.recommendation.price)"></div>
+                        <button @click="openQuickView(quiz.recommendation); showQuizModal = false" class="w-full py-3 rounded-xl bg-neon-lime text-slate-950 font-bold text-xs hover:bg-neon-limeHover">Lihat Detail Sepatu Ini</button>
+                    </div>
+                </template>
+                <button @click="resetQuiz()" class="text-xs text-slate-400 underline">Ulangi Kuis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Modern Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-neon-lime flex items-center justify-center text-slate-950 font-black text-base">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white">dimasstore</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Destinasi utama pelari Indonesia untuk sepatu running original berkinerja tinggi, sepatu carbon plate, dan pelengkapan atletik modern.</p>
+                    <div class="flex gap-3 text-slate-400">
+                        <a href="#" class="hover:text-neon-lime text-sm"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-neon-lime text-sm"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-neon-lime text-sm"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div class="space-y-2 text-xs">
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3">Kategori Popular</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#katalog" class="hover:text-neon-lime">Carbon Plated Racers</a></li>
+                        <li><a href="#katalog" class="hover:text-neon-lime">Max Cushioning Shoes</a></li>
+                        <li><a href="#katalog" class="hover:text-neon-lime">Daily Marathon Trainers</a></li>
+                        <li><a href="#katalog" class="hover:text-neon-lime">Trail Running Shoes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Customer Care -->
+                <div class="space-y-2 text-xs">
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3">Layanan Pelanggan</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" @click.prevent="showSizeGuideModal = true" class="hover:text-neon-lime">Panduan Ukuran Sepatu</a></li>
+                        <li><a href="#" class="hover:text-neon-lime">Garansi Tukar Size 30 Hari</a></li>
+                        <li><a href="#" class="hover:text-neon-lime">Cek Resi & Pengiriman</a></li>
+                        <li><a href="#" class="hover:text-neon-lime">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter Subscription -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-white text-xs uppercase tracking-wider">Berlangganan Promo Lari</h4>
+                    <p class="text-xs text-slate-400">Dapatkan voucher diskon khusus dan info rilis sepatu race limited edition.</p>
+                    <form @submit.prevent="triggerToast('Terima kasih telah berlangganan newsletter! 📩')" class="flex gap-2">
+                        <input type="email" placeholder="Email Anda..." required class="bg-slate-900 border border-slate-800 text-xs rounded-xl px-3 py-2 text-slate-200 flex-1 focus:outline-none focus:border-neon-lime">
+                        <button type="submit" class="px-3.5 py-2 rounded-xl bg-neon-lime text-slate-950 font-bold text-xs hover:bg-neon-limeHover">Kirim</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-slate-900 text-center text-xs text-slate-500">
+                &copy; 2026 dimasstore Indonesia. All Rights Reserved. Crafted for runners.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Toast Notification System -->
+    <div 
+        x-cloak
+        x-show="toast.show" 
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-neon-lime/60 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3"
+    >
+        <i class="fa-solid fa-circle-check text-neon-lime"></i>
+        <span class="text-xs font-bold" x-text="toast.message"></span>
+    </div>
+
+</body>
+</html>
